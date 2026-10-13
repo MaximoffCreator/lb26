@@ -1,0 +1,23 @@
+{
+  "stats": {
+    "minecraft:killed": {
+      "minecraft:sheep": 1
+    },
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 762,
+      "minecraft:walk_one_cm": 270,
+      "minecraft:leave_game": 1,
+      "minecraft:mob_kills": 1,
+      "minecraft:damage_taken": 50,
+      "minecraft:play_time": 762,
+      "minecraft:damage_dealt": 88,
+      "minecraft:jump": 15,
+      "minecraft:time_since_death": 762,
+      "minecraft:sprint_one_cm": 4017,
+      "minecraft:fall_one_cm": 1250,
+      "minecraft:total_world_time": 1730,
+      "minecraft:fly_one_cm": 5547
+    }
+  },
+  "DataVersion": 4903
+}

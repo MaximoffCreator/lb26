@@ -1,0 +1,28 @@
+{
+  "minecraft:nether/charge_respawn_anchor": {
+    "criteria": {
+      "charge_respawn_anchor": "2026-10-10 10:52:58 +0200"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/crafting_table": {
+    "criteria": {
+      "unlock_right_away": "2026-10-10 10:51:49 +0200"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/redstone_lamp": {
+    "criteria": {
+      "has_glowstone": "2026-10-10 10:52:19 +0200"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:beach": "2026-10-10 10:51:50 +0200",
+      "minecraft:forest": "2026-10-10 10:53:01 +0200"
+    },
+    "done": false
+  },
+  "DataVersion": 4903
+}

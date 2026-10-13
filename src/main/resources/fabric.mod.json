@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "lb26",
+  "version": "${version}",
+  "name": "lb26",
+  "description": "There are bugs, but I will try to fix them every update of the client",
+  "authors": [
+    "MaximOff2026"
+  ],
+  "contact": {},
+  "license": "CC0-1.0",
+  "icon": "assets/lb26/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      {
+        "value": "dev.kestrel.lb26.Lb26Client",
+        "adapter": "kotlin"
+      }
+    ]
+  },
+  "mixins": [
+    "lb26.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.2",
+    "java": ">=25",
+    "fabric-api": "*",
+    "fabric-language-kotlin": "*"
+  }
+}

@@ -1,0 +1,57 @@
+clear
+xpackage dev.kestrel.lb26
+
+import dev.kestrel.lb26.module.Module
+import dev.kestrel.lb26.module.modules.combat.AutoAnchor
+import dev.kestrel.lb26.module.modules.combat.AutoCrystal
+import dev.kestrel.lb26.module.modules.combat.HardKillAura
+import dev.kestrel.lb26.module.modules.combat.KillAura
+import dev.kestrel.lb26.module.modules.movement.Fly
+import dev.kestrel.lb26.module.modules.movement.NoFall
+import dev.kestrel.lb26.module.modules.player.AutoTotem
+import dev.kestrel.lb26.ui.ClickGui
+import net.fabricmc.api.ClientModInitializer
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
+import org.lwjgl.glfw.GLFW
+
+object Lb26Client : ClientModInitializer {
+
+    val allModules: List<Module> = listOf(
+        KillAura, HardKillAura, AutoAnchor, AutoCrystal,
+        AutoTotem, Fly, NoFall
+    )
+
+    override fun onInitializeClient() {
+        var menuWasDown = false
+
+        val keys = mapOf(
+            GLFW.GLFW_KEY_R to KillAura,
+            GLFW.GLFW_KEY_H to HardKillAura,
+            GLFW.GLFW_KEY_K to AutoAnchor,
+            GLFW.GLFW_KEY_J to AutoCrystal,
+            GLFW.GLFW_KEY_COMMA to AutoTotem,
+            GLFW.GLFW_KEY_V to Fly,
+            GLFW.GLFW_KEY_N to NoFall
+        )
+        val wasDown = mutableMapOf<Int, Boolean>()
+
+        ClientTickEvents.END_CLIENT_TICK.register { mc ->
+            for (m in allModules) m.onUpdate()
+
+            if (mc.gui.screen() != null) {
+                for (k in keys.keys) wasDown[k] = true
+                return@register
+            }
+
+            val window = GLFW.glfwGetCurrentContext()
+            if (window != 0L) {
+                for ((key, module) in keys) {
+                    val down = GLFW.glfwGetKey(window, key) == GLFW.GLFW_PRESS
+                    val was = wasDown[key] ?: false
+                    if (down && !was) module.enabled = !module.enabled
+                    wasDown[key] = down
+                }
+            }
+        }
+    }
+}

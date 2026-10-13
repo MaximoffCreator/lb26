@@ -1,0 +1,1012 @@
+---- Minecraft Crash Report ----
+// I let you down. Sorry :(
+
+Time: 2026-10-11 15:30:06
+Description: Client shutdown from window close callback
+
+java.lang.Error: Watchdog (Client shutdown from window close callback)
+	at knot//org.apache.logging.log4j.core.appender.OutputStreamManager.writeBytes(OutputStreamManager.java:365)
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.writeEncodedText(TextEncoderHelper.java:101)
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.encodeText(TextEncoderHelper.java:66)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:67)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:31)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:239)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:227)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:220)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:211)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:160)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:133)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:124)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:88)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:807)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:765)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.logParent(LoggerConfig.java:798)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:767)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:685)
+	at knot//org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:92)
+	at knot//org.apache.logging.log4j.core.Logger.log(Logger.java:187)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2970)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2922)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2904)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2653)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:2393)
+	at knot//org.apache.logging.slf4j.Log4jLogger.info(Log4jLogger.java:173)
+	at knot//net.minecraft.client.Minecraft.exitWorldAndClose(Minecraft.java:1083)
+	at knot//net.minecraft.client.main.Main.main(Main.java:282)
+	at java.base@25.0.4.1/java.lang.invoke.LambdaForm$DMH/0x0000780001228400.invokeStaticInit(LambdaForm$DMH)
+	at java.base@25.0.4.1/java.lang.invoke.LambdaForm$MH/0x0000780001045400.invokeExact_MT(LambdaForm$MH)
+	at app//net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:517)
+	at app//net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72)
+	at app//net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+	at java.base@25.0.4.1/java.lang.invoke.LambdaForm$DMH/0x0000780001044c00.invokeStatic(LambdaForm$DMH)
+	at java.base@25.0.4.1/java.lang.invoke.LambdaForm$MH/0x0000780001045400.invokeExact_MT(LambdaForm$MH)
+	at app//net.fabricmc.devlaunchinjector.Main.main(Main.java:86)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Client shutdown watchdog #1
+Stacktrace:
+	at knot//org.apache.logging.log4j.core.appender.OutputStreamManager.writeBytes(OutputStreamManager.java:365)
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.writeEncodedText(TextEncoderHelper.java:101)
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.encodeText(TextEncoderHelper.java:66)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:67)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:31)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:239)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:227)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:220)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:211)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:160)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:133)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:124)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:88)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:807)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:765)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.logParent(LoggerConfig.java:798)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:767)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:685)
+	at knot//org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:92)
+	at knot//org.apache.logging.log4j.core.Logger.log(Logger.java:187)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2970)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2922)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2904)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2653)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:2393)
+	at knot//org.apache.logging.slf4j.Log4jLogger.info(Log4jLogger.java:173)
+	at knot//net.minecraft.client.Minecraft.exitWorldAndClose(Minecraft.java:1083)
+	at knot//net.minecraft.client.main.Main.main(Main.java:282)
+	at java.base@25.0.4.1/java.lang.invoke.LambdaForm$DMH/0x0000780001228400.invokeStaticInit(LambdaForm$DMH)
+	at java.base@25.0.4.1/java.lang.invoke.LambdaForm$MH/0x0000780001045400.invokeExact_MT(LambdaForm$MH)
+	at app//net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:517)
+	at app//net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72)
+	at app//net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+
+-- Thread Dump --
+Details:
+	Threads: 
+"Render thread" prio=10 Id=3 BLOCKED on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75 owned by "Worker-Main-1" Id=60
+	at knot//org.apache.logging.log4j.core.appender.OutputStreamManager.writeBytes(OutputStreamManager.java:365)
+	-  blocked on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.writeEncodedText(TextEncoderHelper.java:101)
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.encodeText(TextEncoderHelper.java:66)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:67)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:31)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:239)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:227)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:220)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:211)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:160)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:133)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:124)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:88)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:807)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:765)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.logParent(LoggerConfig.java:798)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:767)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:685)
+	at knot//org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:92)
+	at knot//org.apache.logging.log4j.core.Logger.log(Logger.java:187)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2970)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2922)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2904)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2653)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:2393)
+	at knot//org.apache.logging.slf4j.Log4jLogger.info(Log4jLogger.java:173)
+	at knot//net.minecraft.client.Minecraft.exitWorldAndClose(Minecraft.java:1083)
+	at knot//net.minecraft.client.main.Main.main(Main.java:282)
+	at java.base@25.0.4.1/java.lang.invoke.LambdaForm$DMH/0x0000780001228400.invokeStaticInit(LambdaForm$DMH)
+	at java.base@25.0.4.1/java.lang.invoke.LambdaForm$MH/0x0000780001045400.invokeExact_MT(LambdaForm$MH)
+	at app//net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:517)
+	at app//net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72)
+	at app//net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+	at java.base@25.0.4.1/java.lang.invoke.LambdaForm$DMH/0x0000780001044c00.invokeStatic(LambdaForm$DMH)
+	at java.base@25.0.4.1/java.lang.invoke.LambdaForm$MH/0x0000780001045400.invokeExact_MT(LambdaForm$MH)
+	at app//net.fabricmc.devlaunchinjector.Main.main(Main.java:86)
+
+
+"Server thread" prio=8 Id=71 BLOCKED on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75 owned by "Worker-Main-1" Id=60
+	at knot//org.apache.logging.log4j.core.appender.OutputStreamManager.writeBytes(OutputStreamManager.java:365)
+	-  blocked on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.writeEncodedText(TextEncoderHelper.java:101)
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.encodeText(TextEncoderHelper.java:66)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:67)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:31)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:239)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:227)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:220)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:211)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:160)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:133)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:124)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:88)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:807)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:765)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.logParent(LoggerConfig.java:798)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:767)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:685)
+	at knot//org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:92)
+	at knot//org.apache.logging.log4j.core.Logger.log(Logger.java:187)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2970)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2922)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2904)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2653)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:2393)
+	at knot//org.apache.logging.slf4j.Log4jLogger.info(Log4jLogger.java:173)
+	at knot//net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:137)
+	at knot//net.minecraft.server.MinecraftServer.processPacketsAndTick(MinecraftServer.java:1013)
+	at knot//net.minecraft.client.server.IntegratedServer.processPacketsAndTick(IntegratedServer.java:122)
+	at knot//net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:761)
+	at knot//net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:307)
+	at knot//net.minecraft.server.MinecraftServer$$Lambda/0x00007800024d7c68.run(Unknown Source)
+	at java.base@25.0.4.1/java.lang.Thread.runWith(Thread.java:1487)
+	at java.base@25.0.4.1/java.lang.Thread.run(Thread.java:1474)
+
+
+"IO-Worker-7" prio=10 Id=83 WAITING on java.util.concurrent.CompletableFuture$Signaller@78ce9581
+	at java.base@25.0.4.1/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.CompletableFuture$Signaller@78ce9581
+	at java.base@25.0.4.1/java.util.concurrent.locks.LockSupport.park(LockSupport.java:223)
+	at java.base@25.0.4.1/java.util.concurrent.CompletableFuture$Signaller.block(CompletableFuture.java:1885)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:4364)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:4310)
+	at java.base@25.0.4.1/java.util.concurrent.CompletableFuture.waitingGet(CompletableFuture.java:1919)
+	at java.base@25.0.4.1/java.util.concurrent.CompletableFuture.join(CompletableFuture.java:2138)
+	at knot//net.minecraft.server.level.ChunkMap$$Lambda/0x00007800027a1d58.get(Unknown Source)
+	at knot//net.minecraft.world.level.chunk.storage.IOWorker.lambda$store$1(IOWorker.java:123)
+	at knot//net.minecraft.world.level.chunk.storage.IOWorker$$Lambda/0x00007800027a1f88.get(Unknown Source)
+	at knot//net.minecraft.world.level.chunk.storage.IOWorker.lambda$submitTask$0(IOWorker.java:201)
+	at knot//net.minecraft.world.level.chunk.storage.IOWorker$$Lambda/0x000078000257d640.accept(Unknown Source)
+	at knot//net.minecraft.util.thread.PriorityConsecutiveExecutor.lambda$scheduleWithResult$0(PriorityConsecutiveExecutor.java:20)
+	at knot//net.minecraft.util.thread.PriorityConsecutiveExecutor$$Lambda/0x000078000257dab0.run(Unknown Source)
+	at knot//net.minecraft.util.thread.StrictQueue$RunnableWithPriority.run(StrictQueue.java:96)
+	at knot//net.minecraft.util.Util.runNamed(Util.java:338)
+	at knot//net.minecraft.util.thread.AbstractConsecutiveExecutor.pollTask(AbstractConsecutiveExecutor.java:49)
+	at knot//net.minecraft.util.thread.AbstractConsecutiveExecutor.run(AbstractConsecutiveExecutor.java:56)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base@25.0.4.1/java.lang.Thread.runWith(Thread.java:1487)
+	at java.base@25.0.4.1/java.lang.Thread.run(Thread.java:1474)
+
+	Number of locked synchronizers = 1
+	- java.util.concurrent.ThreadPoolExecutor$Worker@7ff33f26
+
+
+"IO-Worker-1" prio=10 Id=68 TIMED_WAITING on java.util.concurrent.SynchronousQueue$Transferer@44eff664
+	at java.base@25.0.4.1/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.SynchronousQueue$Transferer@44eff664
+	at java.base@25.0.4.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:408)
+	at java.base@25.0.4.1/java.util.concurrent.LinkedTransferQueue$DualNode.await(LinkedTransferQueue.java:452)
+	at java.base@25.0.4.1/java.util.concurrent.SynchronousQueue$Transferer.xferLifo(SynchronousQueue.java:194)
+	at java.base@25.0.4.1/java.util.concurrent.SynchronousQueue.xfer(SynchronousQueue.java:235)
+	at java.base@25.0.4.1/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:338)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1015)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1076)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base@25.0.4.1/java.lang.Thread.runWith(Thread.java:1487)
+	at java.base@25.0.4.1/java.lang.Thread.run(Thread.java:1474)
+
+
+"IO-Worker-3" prio=10 Id=73 TIMED_WAITING on java.util.concurrent.SynchronousQueue$Transferer@44eff664
+	at java.base@25.0.4.1/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.SynchronousQueue$Transferer@44eff664
+	at java.base@25.0.4.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:408)
+	at java.base@25.0.4.1/java.util.concurrent.LinkedTransferQueue$DualNode.await(LinkedTransferQueue.java:452)
+	at java.base@25.0.4.1/java.util.concurrent.SynchronousQueue$Transferer.xferLifo(SynchronousQueue.java:194)
+	at java.base@25.0.4.1/java.util.concurrent.SynchronousQueue.xfer(SynchronousQueue.java:235)
+	at java.base@25.0.4.1/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:338)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1015)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1076)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base@25.0.4.1/java.lang.Thread.runWith(Thread.java:1487)
+	at java.base@25.0.4.1/java.lang.Thread.run(Thread.java:1474)
+
+
+"IO-Worker-4" prio=10 Id=74 TIMED_WAITING on java.util.concurrent.SynchronousQueue$Transferer@44eff664
+	at java.base@25.0.4.1/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.SynchronousQueue$Transferer@44eff664
+	at java.base@25.0.4.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:408)
+	at java.base@25.0.4.1/java.util.concurrent.LinkedTransferQueue$DualNode.await(LinkedTransferQueue.java:452)
+	at java.base@25.0.4.1/java.util.concurrent.SynchronousQueue$Transferer.xferLifo(SynchronousQueue.java:194)
+	at java.base@25.0.4.1/java.util.concurrent.SynchronousQueue.xfer(SynchronousQueue.java:235)
+	at java.base@25.0.4.1/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:338)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1015)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1076)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base@25.0.4.1/java.lang.Thread.runWith(Thread.java:1487)
+	at java.base@25.0.4.1/java.lang.Thread.run(Thread.java:1474)
+
+
+"IO-Worker-6" prio=10 Id=82 TIMED_WAITING on java.util.concurrent.SynchronousQueue$Transferer@44eff664
+	at java.base@25.0.4.1/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.SynchronousQueue$Transferer@44eff664
+	at java.base@25.0.4.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:408)
+	at java.base@25.0.4.1/java.util.concurrent.LinkedTransferQueue$DualNode.await(LinkedTransferQueue.java:452)
+	at java.base@25.0.4.1/java.util.concurrent.SynchronousQueue$Transferer.xferLifo(SynchronousQueue.java:194)
+	at java.base@25.0.4.1/java.util.concurrent.SynchronousQueue.xfer(SynchronousQueue.java:235)
+	at java.base@25.0.4.1/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:338)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1015)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1076)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base@25.0.4.1/java.lang.Thread.runWith(Thread.java:1487)
+	at java.base@25.0.4.1/java.lang.Thread.run(Thread.java:1474)
+
+
+"Client shutdown watchdog #1" daemon prio=10 Id=85 RUNNABLE
+	at java.management@25.0.4.1/sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at java.management@25.0.4.1/sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:505)
+	at java.management@25.0.4.1/sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:493)
+	at knot//net.minecraft.util.Util.dumpThreadInfo(Util.java:522)
+	at knot//net.minecraft.server.dedicated.ServerWatchdog.createWatchdogCrashReport(ServerWatchdog.java:80)
+	at knot//com.mojang.blaze3d.platform.ClientShutdownWatchdog.lambda$startShutdownWatchdog$0(ClientShutdownWatchdog.java:34)
+	at knot//com.mojang.blaze3d.platform.ClientShutdownWatchdog$$Lambda/0x000078000287dbb8.run(Unknown Source)
+	at java.base@25.0.4.1/java.lang.Thread.runWith(Thread.java:1487)
+	at java.base@25.0.4.1/java.lang.Thread.run(Thread.java:1474)
+
+
+"Notification Thread" daemon prio=9 Id=23 RUNNABLE
+
+
+"Reference Handler" daemon prio=10 Id=14 RUNNABLE
+	at java.base@25.0.4.1/java.lang.ref.Reference.waitForReferencePendingList(Native Method)
+	at java.base@25.0.4.1/java.lang.ref.Reference.processPendingReferences(Reference.java:246)
+	at java.base@25.0.4.1/java.lang.ref.Reference$ReferenceHandler.run(Reference.java:208)
+
+
+"Signal Dispatcher" daemon prio=9 Id=16 RUNNABLE
+
+
+"Worker-Main-1" daemon prio=5 Id=60 RUNNABLE (in native)
+	at java.base@25.0.4.1/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base@25.0.4.1/java.io.FileOutputStream.write(FileOutputStream.java:352)
+	at java.base@25.0.4.1/java.lang.System$Out.write(System.java:1911)
+	at java.base@25.0.4.1/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:123)
+	at java.base@25.0.4.1/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:203)
+	-  locked java.io.BufferedOutputStream@4c5744c
+	at java.base@25.0.4.1/java.io.PrintStream.write(PrintStream.java:541)
+	-  locked java.io.PrintStream@33613cd4
+	at knot//org.apache.logging.log4j.core.util.CloseShieldOutputStream.write(CloseShieldOutputStream.java:53)
+	at knot//org.apache.logging.log4j.core.appender.OutputStreamManager.writeToDestination(OutputStreamManager.java:263)
+	at knot//org.apache.logging.log4j.core.appender.OutputStreamManager.flushBuffer(OutputStreamManager.java:296)
+	-  locked org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75
+	at knot//org.apache.logging.log4j.core.appender.OutputStreamManager.flush(OutputStreamManager.java:307)
+	-  locked org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:229)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:220)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:211)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:160)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:133)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:124)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:88)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:807)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:765)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.logParent(LoggerConfig.java:798)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:767)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:685)
+	at knot//org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:92)
+	at knot//org.apache.logging.log4j.core.Logger.log(Logger.java:187)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2970)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2922)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2904)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2682)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:2435)
+	at knot//org.apache.logging.slf4j.Log4jLogger.info(Log4jLogger.java:183)
+	at knot//net.minecraft.server.LoggedPrintStream.logLine(LoggedPrintStream.java:30)
+	at knot//net.minecraft.server.LoggedPrintStream.println(LoggedPrintStream.java:26)
+	at knot//dev.kestrel.lb26.module.modules.render.XRay.isVisible(XRay.kt:37)
+	at knot//net.minecraft.world.level.block.Block.handler$zoc000$lb26$shouldRenderFace(Block.java:1184)
+	at knot//net.minecraft.world.level.block.Block.shouldRenderFace(Block.java)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl.shouldCullFace(AltModelBlockRendererImpl.java:143)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl$$Lambda/0x00007800027d6ef8.test(Unknown Source)
+	at knot//net.fabricmc.fabric.impl.client.renderer.VanillaBlockModelPartEncoder.emitQuads(VanillaBlockModelPartEncoder.java:44)
+	at knot//net.fabricmc.fabric.api.client.renderer.v1.model.FabricBlockStateModelPart.emitQuads(FabricBlockStateModelPart.java:57)
+	at knot//net.minecraft.client.resources.model.SimpleModelWrapper.emitQuads(SimpleModelWrapper.java:609)
+	at knot//net.minecraft.client.renderer.block.dispatch.SingleVariant.emitQuads(SingleVariant.java:560)
+	at knot//net.minecraft.client.renderer.block.dispatch.WeightedVariants.emitQuads(WeightedVariants.java:547)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl.tesselateBlock(AltModelBlockRendererImpl.java:110)
+	at knot//net.minecraft.client.renderer.chunk.SectionCompiler.redirect$zhl000$fabric-renderer-api-v1$tesselateBlockProxy(SectionCompiler.java:579)
+	at knot//net.minecraft.client.renderer.chunk.SectionCompiler.compile(SectionCompiler.java:98)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher$RenderSection$CompileTask.doTask(SectionRenderDispatcher.java:444)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher.runTask(SectionRenderDispatcher.java:91)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher$$Lambda/0x00007800027e2b98.run(Unknown Source)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1753)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1745)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$InterruptibleTask.exec(ForkJoinTask.java:1662)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:511)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1450)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2019)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+
+
+"Worker-Main-2" daemon prio=5 Id=62 BLOCKED on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75 owned by "Worker-Main-1" Id=60
+	at knot//org.apache.logging.log4j.core.appender.OutputStreamManager.writeBytes(OutputStreamManager.java:365)
+	-  blocked on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.writeEncodedText(TextEncoderHelper.java:101)
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.encodeText(TextEncoderHelper.java:66)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:67)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:31)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:239)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:227)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:220)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:211)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:160)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:133)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:124)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:88)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:807)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:765)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.logParent(LoggerConfig.java:798)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:767)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:685)
+	at knot//org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:92)
+	at knot//org.apache.logging.log4j.core.Logger.log(Logger.java:187)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2970)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2922)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2904)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2682)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:2435)
+	at knot//org.apache.logging.slf4j.Log4jLogger.info(Log4jLogger.java:183)
+	at knot//net.minecraft.server.LoggedPrintStream.logLine(LoggedPrintStream.java:30)
+	at knot//net.minecraft.server.LoggedPrintStream.println(LoggedPrintStream.java:26)
+	at knot//dev.kestrel.lb26.module.modules.render.XRay.isVisible(XRay.kt:37)
+	at knot//net.minecraft.world.level.block.Block.handler$zoc000$lb26$shouldRenderFace(Block.java:1184)
+	at knot//net.minecraft.world.level.block.Block.shouldRenderFace(Block.java)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl.shouldCullFace(AltModelBlockRendererImpl.java:143)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl$$Lambda/0x00007800027d6ef8.test(Unknown Source)
+	at knot//net.fabricmc.fabric.impl.client.renderer.VanillaBlockModelPartEncoder.emitQuads(VanillaBlockModelPartEncoder.java:44)
+	at knot//net.fabricmc.fabric.api.client.renderer.v1.model.FabricBlockStateModelPart.emitQuads(FabricBlockStateModelPart.java:57)
+	at knot//net.minecraft.client.resources.model.SimpleModelWrapper.emitQuads(SimpleModelWrapper.java:609)
+	at knot//net.minecraft.client.renderer.block.dispatch.SingleVariant.emitQuads(SingleVariant.java:560)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl.tesselateBlock(AltModelBlockRendererImpl.java:110)
+	at knot//net.minecraft.client.renderer.chunk.SectionCompiler.redirect$zhl000$fabric-renderer-api-v1$tesselateBlockProxy(SectionCompiler.java:579)
+	at knot//net.minecraft.client.renderer.chunk.SectionCompiler.compile(SectionCompiler.java:98)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher$RenderSection$CompileTask.doTask(SectionRenderDispatcher.java:444)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher.runTask(SectionRenderDispatcher.java:91)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher$$Lambda/0x00007800027e2b98.run(Unknown Source)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1753)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1745)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$InterruptibleTask.exec(ForkJoinTask.java:1662)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:511)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1450)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2019)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+
+
+"Worker-Main-3" daemon prio=5 Id=63 BLOCKED on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75 owned by "Worker-Main-1" Id=60
+	at knot//org.apache.logging.log4j.core.appender.OutputStreamManager.writeBytes(OutputStreamManager.java:365)
+	-  blocked on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.writeEncodedText(TextEncoderHelper.java:101)
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.encodeText(TextEncoderHelper.java:66)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:67)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:31)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:239)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:227)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:220)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:211)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:160)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:133)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:124)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:88)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:807)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:765)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.logParent(LoggerConfig.java:798)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:767)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:685)
+	at knot//org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:92)
+	at knot//org.apache.logging.log4j.core.Logger.log(Logger.java:187)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2970)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2922)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2904)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2682)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:2435)
+	at knot//org.apache.logging.slf4j.Log4jLogger.info(Log4jLogger.java:183)
+	at knot//net.minecraft.server.LoggedPrintStream.logLine(LoggedPrintStream.java:30)
+	at knot//net.minecraft.server.LoggedPrintStream.println(LoggedPrintStream.java:26)
+	at knot//dev.kestrel.lb26.module.modules.render.XRay.isVisible(XRay.kt:37)
+	at knot//net.minecraft.world.level.block.Block.handler$zoc000$lb26$shouldRenderFace(Block.java:1184)
+	at knot//net.minecraft.world.level.block.Block.shouldRenderFace(Block.java)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl.shouldCullFace(AltModelBlockRendererImpl.java:143)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl$$Lambda/0x00007800027d6ef8.test(Unknown Source)
+	at knot//net.fabricmc.fabric.impl.client.renderer.VanillaBlockModelPartEncoder.emitQuads(VanillaBlockModelPartEncoder.java:44)
+	at knot//net.fabricmc.fabric.api.client.renderer.v1.model.FabricBlockStateModelPart.emitQuads(FabricBlockStateModelPart.java:57)
+	at knot//net.minecraft.client.resources.model.SimpleModelWrapper.emitQuads(SimpleModelWrapper.java:609)
+	at knot//net.minecraft.client.renderer.block.dispatch.SingleVariant.emitQuads(SingleVariant.java:560)
+	at knot//net.minecraft.client.renderer.block.dispatch.WeightedVariants.emitQuads(WeightedVariants.java:547)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl.tesselateBlock(AltModelBlockRendererImpl.java:110)
+	at knot//net.minecraft.client.renderer.chunk.SectionCompiler.redirect$zhl000$fabric-renderer-api-v1$tesselateBlockProxy(SectionCompiler.java:579)
+	at knot//net.minecraft.client.renderer.chunk.SectionCompiler.compile(SectionCompiler.java:98)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher$RenderSection$CompileTask.doTask(SectionRenderDispatcher.java:444)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher.runTask(SectionRenderDispatcher.java:91)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher$$Lambda/0x00007800027e2b98.run(Unknown Source)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1753)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1745)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$InterruptibleTask.exec(ForkJoinTask.java:1662)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:511)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1450)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2019)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+
+
+"Worker-Main-4" daemon prio=5 Id=64 BLOCKED on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75 owned by "Worker-Main-1" Id=60
+	at knot//org.apache.logging.log4j.core.appender.OutputStreamManager.writeBytes(OutputStreamManager.java:365)
+	-  blocked on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.writeEncodedText(TextEncoderHelper.java:101)
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.encodeText(TextEncoderHelper.java:66)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:67)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:31)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:239)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:227)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:220)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:211)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:160)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:133)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:124)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:88)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:807)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:765)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.logParent(LoggerConfig.java:798)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:767)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:685)
+	at knot//org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:92)
+	at knot//org.apache.logging.log4j.core.Logger.log(Logger.java:187)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2970)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2922)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2904)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2682)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:2435)
+	at knot//org.apache.logging.slf4j.Log4jLogger.info(Log4jLogger.java:183)
+	at knot//net.minecraft.server.LoggedPrintStream.logLine(LoggedPrintStream.java:30)
+	at knot//net.minecraft.server.LoggedPrintStream.println(LoggedPrintStream.java:26)
+	at knot//dev.kestrel.lb26.module.modules.render.XRay.isVisible(XRay.kt:37)
+	at knot//net.minecraft.world.level.block.Block.handler$zoc000$lb26$shouldRenderFace(Block.java:1184)
+	at knot//net.minecraft.world.level.block.Block.shouldRenderFace(Block.java)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl.shouldCullFace(AltModelBlockRendererImpl.java:143)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl$$Lambda/0x00007800027d6ef8.test(Unknown Source)
+	at knot//net.fabricmc.fabric.impl.client.renderer.VanillaBlockModelPartEncoder.emitQuads(VanillaBlockModelPartEncoder.java:44)
+	at knot//net.fabricmc.fabric.api.client.renderer.v1.model.FabricBlockStateModelPart.emitQuads(FabricBlockStateModelPart.java:57)
+	at knot//net.minecraft.client.resources.model.SimpleModelWrapper.emitQuads(SimpleModelWrapper.java:609)
+	at knot//net.minecraft.client.renderer.block.dispatch.SingleVariant.emitQuads(SingleVariant.java:560)
+	at knot//net.minecraft.client.renderer.block.dispatch.WeightedVariants.emitQuads(WeightedVariants.java:547)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl.tesselateBlock(AltModelBlockRendererImpl.java:110)
+	at knot//net.minecraft.client.renderer.chunk.SectionCompiler.redirect$zhl000$fabric-renderer-api-v1$tesselateBlockProxy(SectionCompiler.java:579)
+	at knot//net.minecraft.client.renderer.chunk.SectionCompiler.compile(SectionCompiler.java:98)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher$RenderSection$CompileTask.doTask(SectionRenderDispatcher.java:444)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher.runTask(SectionRenderDispatcher.java:91)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher$$Lambda/0x00007800027e2b98.run(Unknown Source)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1753)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1745)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$InterruptibleTask.exec(ForkJoinTask.java:1662)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:511)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1450)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2019)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+
+
+"Worker-Main-5" daemon prio=5 Id=65 BLOCKED on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75 owned by "Worker-Main-1" Id=60
+	at knot//org.apache.logging.log4j.core.appender.OutputStreamManager.writeBytes(OutputStreamManager.java:365)
+	-  blocked on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.writeEncodedText(TextEncoderHelper.java:101)
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.encodeText(TextEncoderHelper.java:66)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:67)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:31)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:239)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:227)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:220)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:211)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:160)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:133)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:124)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:88)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:807)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:765)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.logParent(LoggerConfig.java:798)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:767)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:685)
+	at knot//org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:92)
+	at knot//org.apache.logging.log4j.core.Logger.log(Logger.java:187)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2970)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2922)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2904)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2682)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:2435)
+	at knot//org.apache.logging.slf4j.Log4jLogger.info(Log4jLogger.java:183)
+	at knot//net.minecraft.server.LoggedPrintStream.logLine(LoggedPrintStream.java:30)
+	at knot//net.minecraft.server.LoggedPrintStream.println(LoggedPrintStream.java:26)
+	at knot//dev.kestrel.lb26.module.modules.render.XRay.isVisible(XRay.kt:37)
+	at knot//net.minecraft.world.level.block.Block.handler$zoc000$lb26$shouldRenderFace(Block.java:1184)
+	at knot//net.minecraft.world.level.block.Block.shouldRenderFace(Block.java)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl.shouldCullFace(AltModelBlockRendererImpl.java:143)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl$$Lambda/0x00007800027d6ef8.test(Unknown Source)
+	at knot//net.fabricmc.fabric.impl.client.renderer.VanillaBlockModelPartEncoder.emitQuads(VanillaBlockModelPartEncoder.java:44)
+	at knot//net.fabricmc.fabric.api.client.renderer.v1.model.FabricBlockStateModelPart.emitQuads(FabricBlockStateModelPart.java:57)
+	at knot//net.minecraft.client.resources.model.SimpleModelWrapper.emitQuads(SimpleModelWrapper.java:609)
+	at knot//net.minecraft.client.renderer.block.dispatch.SingleVariant.emitQuads(SingleVariant.java:560)
+	at knot//net.minecraft.client.renderer.block.dispatch.WeightedVariants.emitQuads(WeightedVariants.java:547)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl.tesselateBlock(AltModelBlockRendererImpl.java:110)
+	at knot//net.minecraft.client.renderer.chunk.SectionCompiler.redirect$zhl000$fabric-renderer-api-v1$tesselateBlockProxy(SectionCompiler.java:579)
+	at knot//net.minecraft.client.renderer.chunk.SectionCompiler.compile(SectionCompiler.java:98)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher$RenderSection$CompileTask.doTask(SectionRenderDispatcher.java:444)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher.runTask(SectionRenderDispatcher.java:91)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher$$Lambda/0x00007800027e2b98.run(Unknown Source)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1753)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1745)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$InterruptibleTask.exec(ForkJoinTask.java:1662)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:511)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1450)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2019)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+
+
+"Worker-Main-6" daemon prio=5 Id=66 BLOCKED on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75 owned by "Worker-Main-1" Id=60
+	at knot//org.apache.logging.log4j.core.appender.OutputStreamManager.writeBytes(OutputStreamManager.java:365)
+	-  blocked on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.writeEncodedText(TextEncoderHelper.java:101)
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.encodeText(TextEncoderHelper.java:66)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:67)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:31)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:239)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:227)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:220)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:211)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:160)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:133)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:124)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:88)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:807)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:765)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.logParent(LoggerConfig.java:798)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:767)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:685)
+	at knot//org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:92)
+	at knot//org.apache.logging.log4j.core.Logger.log(Logger.java:187)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2970)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2922)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2904)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2682)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:2435)
+	at knot//org.apache.logging.slf4j.Log4jLogger.info(Log4jLogger.java:183)
+	at knot//net.minecraft.server.LoggedPrintStream.logLine(LoggedPrintStream.java:30)
+	at knot//net.minecraft.server.LoggedPrintStream.println(LoggedPrintStream.java:26)
+	at knot//dev.kestrel.lb26.module.modules.render.XRay.isVisible(XRay.kt:37)
+	at knot//net.minecraft.world.level.block.Block.handler$zoc000$lb26$shouldRenderFace(Block.java:1184)
+	at knot//net.minecraft.world.level.block.Block.shouldRenderFace(Block.java)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl.shouldCullFace(AltModelBlockRendererImpl.java:143)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl$$Lambda/0x00007800027d6ef8.test(Unknown Source)
+	at knot//net.fabricmc.fabric.impl.client.renderer.VanillaBlockModelPartEncoder.emitQuads(VanillaBlockModelPartEncoder.java:44)
+	at knot//net.fabricmc.fabric.api.client.renderer.v1.model.FabricBlockStateModelPart.emitQuads(FabricBlockStateModelPart.java:57)
+	at knot//net.minecraft.client.resources.model.SimpleModelWrapper.emitQuads(SimpleModelWrapper.java:609)
+	at knot//net.minecraft.client.renderer.block.dispatch.SingleVariant.emitQuads(SingleVariant.java:560)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl.tesselateBlock(AltModelBlockRendererImpl.java:110)
+	at knot//net.minecraft.client.renderer.chunk.SectionCompiler.redirect$zhl000$fabric-renderer-api-v1$tesselateBlockProxy(SectionCompiler.java:579)
+	at knot//net.minecraft.client.renderer.chunk.SectionCompiler.compile(SectionCompiler.java:98)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher$RenderSection$CompileTask.doTask(SectionRenderDispatcher.java:444)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher.runTask(SectionRenderDispatcher.java:91)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher$$Lambda/0x00007800027e2b98.run(Unknown Source)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1753)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1745)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$InterruptibleTask.exec(ForkJoinTask.java:1662)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:511)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1450)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2019)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+
+
+"Worker-Main-7" daemon prio=5 Id=67 BLOCKED on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75 owned by "Worker-Main-1" Id=60
+	at knot//org.apache.logging.log4j.core.appender.OutputStreamManager.writeBytes(OutputStreamManager.java:365)
+	-  blocked on org.apache.logging.log4j.core.appender.OutputStreamManager@32532b75
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.writeEncodedText(TextEncoderHelper.java:101)
+	at knot//org.apache.logging.log4j.core.layout.TextEncoderHelper.encodeText(TextEncoderHelper.java:66)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:67)
+	at knot//org.apache.logging.log4j.core.layout.StringBuilderEncoder.encode(StringBuilderEncoder.java:31)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:239)
+	at knot//org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:227)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:220)
+	at knot//org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:211)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:160)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:133)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:124)
+	at knot//org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:88)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:807)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:765)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.logParent(LoggerConfig.java:798)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:767)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:741)
+	at knot//org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:685)
+	at knot//org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:92)
+	at knot//org.apache.logging.log4j.core.Logger.log(Logger.java:187)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2970)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2922)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2904)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2682)
+	at knot//org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:2435)
+	at knot//org.apache.logging.slf4j.Log4jLogger.info(Log4jLogger.java:183)
+	at knot//net.minecraft.server.LoggedPrintStream.logLine(LoggedPrintStream.java:30)
+	at knot//net.minecraft.server.LoggedPrintStream.println(LoggedPrintStream.java:26)
+	at knot//dev.kestrel.lb26.module.modules.render.XRay.isVisible(XRay.kt:37)
+	at knot//net.minecraft.world.level.block.Block.handler$zoc000$lb26$shouldRenderFace(Block.java:1184)
+	at knot//net.minecraft.world.level.block.Block.shouldRenderFace(Block.java)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl.shouldCullFace(AltModelBlockRendererImpl.java:143)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl$$Lambda/0x00007800027d6ef8.test(Unknown Source)
+	at knot//net.fabricmc.fabric.impl.client.renderer.VanillaBlockModelPartEncoder.emitQuads(VanillaBlockModelPartEncoder.java:44)
+	at knot//net.fabricmc.fabric.api.client.renderer.v1.model.FabricBlockStateModelPart.emitQuads(FabricBlockStateModelPart.java:57)
+	at knot//net.minecraft.client.resources.model.SimpleModelWrapper.emitQuads(SimpleModelWrapper.java:609)
+	at knot//net.minecraft.client.renderer.block.dispatch.SingleVariant.emitQuads(SingleVariant.java:560)
+	at knot//net.minecraft.client.renderer.block.dispatch.WeightedVariants.emitQuads(WeightedVariants.java:547)
+	at knot//net.fabricmc.fabric.impl.client.indigo.renderer.render.AltModelBlockRendererImpl.tesselateBlock(AltModelBlockRendererImpl.java:110)
+	at knot//net.minecraft.client.renderer.chunk.SectionCompiler.redirect$zhl000$fabric-renderer-api-v1$tesselateBlockProxy(SectionCompiler.java:579)
+	at knot//net.minecraft.client.renderer.chunk.SectionCompiler.compile(SectionCompiler.java:98)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher$RenderSection$CompileTask.doTask(SectionRenderDispatcher.java:444)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher.runTask(SectionRenderDispatcher.java:91)
+	at knot//net.minecraft.client.renderer.chunk.SectionRenderDispatcher$$Lambda/0x00007800027e2b98.run(Unknown Source)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1753)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1745)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask$InterruptibleTask.exec(ForkJoinTask.java:1662)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:511)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1450)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2019)
+	at java.base@25.0.4.1/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+
+
+"Finalizer" daemon prio=8 Id=15 WAITING on java.lang.ref.ReferenceQueue$Lock@266043ad
+	at java.base@25.0.4.1/java.lang.Object.wait0(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@266043ad
+	at java.base@25.0.4.1/java.lang.Object.wait(Object.java:389)
+	at java.base@25.0.4.1/java.lang.Object.wait(Object.java:351)
+	at java.base@25.0.4.1/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:137)
+	at java.base@25.0.4.1/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:215)
+	at java.base@25.0.4.1/java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:165)
+
+
+"Sound engine" daemon prio=10 Id=78 WAITING on java.lang.String@241f38c
+	at java.base@25.0.4.1/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on java.lang.String@241f38c
+	at java.base@25.0.4.1/java.util.concurrent.locks.LockSupport.park(LockSupport.java:223)
+	at knot//net.minecraft.client.sounds.SoundEngineExecutor.waitForTasks(SoundEngineExecutor.java:57)
+	at knot//net.minecraft.util.thread.BlockableEventLoop.managedBlock(BlockableEventLoop.java:145)
+	at knot//net.minecraft.client.sounds.SoundEngineExecutor.run(SoundEngineExecutor.java:51)
+	at knot//net.minecraft.client.sounds.SoundEngineExecutor$$Lambda/0x000078000208d7f8.run(Unknown Source)
+	at java.base@25.0.4.1/java.lang.Thread.runWith(Thread.java:1487)
+	at java.base@25.0.4.1/java.lang.Thread.run(Thread.java:1474)
+
+
+"Common-Cleaner" daemon prio=8 Id=24 TIMED_WAITING on java.lang.ref.ReferenceQueue$Lock@7d433e01
+	at java.base@25.0.4.1/java.lang.Object.wait0(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@7d433e01
+	at java.base@25.0.4.1/java.lang.Object.wait(Object.java:389)
+	at java.base@25.0.4.1/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:123)
+	at java.base@25.0.4.1/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:201)
+	at java.base@25.0.4.1/jdk.internal.ref.CleanerImpl.run(CleanerImpl.java:146)
+	at java.base@25.0.4.1/java.lang.Thread.runWith(Thread.java:1487)
+	at java.base@25.0.4.1/java.lang.Thread.run(Thread.java:1474)
+	at java.base@25.0.4.1/jdk.internal.misc.InnocuousThread.run(InnocuousThread.java:148)
+
+
+"Download-1" daemon prio=5 Id=53 TIMED_WAITING on java.util.concurrent.SynchronousQueue$Transferer@6092fd69
+	at java.base@25.0.4.1/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.SynchronousQueue$Transferer@6092fd69
+	at java.base@25.0.4.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:408)
+	at java.base@25.0.4.1/java.util.concurrent.LinkedTransferQueue$DualNode.await(LinkedTransferQueue.java:452)
+	at java.base@25.0.4.1/java.util.concurrent.SynchronousQueue$Transferer.xferLifo(SynchronousQueue.java:194)
+	at java.base@25.0.4.1/java.util.concurrent.SynchronousQueue.xfer(SynchronousQueue.java:235)
+	at java.base@25.0.4.1/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:338)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1015)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1076)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base@25.0.4.1/java.lang.Thread.runWith(Thread.java:1487)
+	at java.base@25.0.4.1/java.lang.Thread.run(Thread.java:1474)
+
+
+"JNA Cleaner" daemon prio=5 Id=48 TIMED_WAITING on java.lang.ref.ReferenceQueue$Lock@6f68356d
+	at java.base@25.0.4.1/java.lang.Object.wait0(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@6f68356d
+	at java.base@25.0.4.1/java.lang.Object.wait(Object.java:389)
+	at java.base@25.0.4.1/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:123)
+	at java.base@25.0.4.1/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:201)
+	at knot//com.sun.jna.internal.Cleaner$CleanerThread.run(Cleaner.java:154)
+
+
+"Netty Local IO #0" daemon prio=5 Id=75 TIMED_WAITING on io.netty.channel.local.LocalIoHandler@63535fb
+	at java.base@25.0.4.1/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on io.netty.channel.local.LocalIoHandler@63535fb
+	at java.base@25.0.4.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:271)
+	at knot//io.netty.channel.local.LocalIoHandler.run(LocalIoHandler.java:63)
+	at knot//io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)
+	at knot//io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)
+	at knot//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.base@25.0.4.1/java.lang.Thread.runWith(Thread.java:1487)
+	at java.base@25.0.4.1/java.lang.Thread.run(Thread.java:1474)
+
+	Number of locked synchronizers = 1
+	- java.util.concurrent.locks.ReentrantLock$NonfairSync@6b279da1
+
+
+"Netty Local IO #1" daemon prio=5 Id=76 TIMED_WAITING on io.netty.channel.local.LocalIoHandler@76fa356
+	at java.base@25.0.4.1/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on io.netty.channel.local.LocalIoHandler@76fa356
+	at java.base@25.0.4.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:271)
+	at knot//io.netty.channel.local.LocalIoHandler.run(LocalIoHandler.java:63)
+	at knot//io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)
+	at knot//io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)
+	at knot//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.base@25.0.4.1/java.lang.Thread.runWith(Thread.java:1487)
+	at java.base@25.0.4.1/java.lang.Thread.run(Thread.java:1474)
+
+	Number of locked synchronizers = 1
+	- java.util.concurrent.locks.ReentrantLock$NonfairSync@3c882e75
+
+
+"Netty Local IO #2" daemon prio=5 Id=77 TIMED_WAITING on io.netty.channel.local.LocalIoHandler@7fc78187
+	at java.base@25.0.4.1/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on io.netty.channel.local.LocalIoHandler@7fc78187
+	at java.base@25.0.4.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:271)
+	at knot//io.netty.channel.local.LocalIoHandler.run(LocalIoHandler.java:63)
+	at knot//io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)
+	at knot//io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)
+	at knot//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.base@25.0.4.1/java.lang.Thread.runWith(Thread.java:1487)
+	at java.base@25.0.4.1/java.lang.Thread.run(Thread.java:1474)
+
+	Number of locked synchronizers = 1
+	- java.util.concurrent.locks.ReentrantLock$NonfairSync@50f2ec8f
+
+
+"Timer hack thread" daemon prio=5 Id=50 TIMED_WAITING
+	at java.base@25.0.4.1/java.lang.Thread.sleepNanos0(Native Method)
+	at java.base@25.0.4.1/java.lang.Thread.sleepNanos(Thread.java:509)
+	at java.base@25.0.4.1/java.lang.Thread.sleep(Thread.java:540)
+	at knot//net.minecraft.util.Util$9.run(Util.java:964)
+
+
+"Yggdrasil Key Fetcher" daemon prio=5 Id=52 TIMED_WAITING on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@44cba376
+	at java.base@25.0.4.1/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@44cba376
+	at java.base@25.0.4.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:271)
+	at java.base@25.0.4.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1803)
+	at java.base@25.0.4.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1166)
+	at java.base@25.0.4.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:883)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1016)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1076)
+	at java.base@25.0.4.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base@25.0.4.1/java.lang.Thread.runWith(Thread.java:1487)
+	at java.base@25.0.4.1/java.lang.Thread.run(Thread.java:1474)
+
+
+Stacktrace:
+	at knot//net.minecraft.server.dedicated.ServerWatchdog.createWatchdogCrashReport(ServerWatchdog.java:95)
+	at knot//com.mojang.blaze3d.platform.ClientShutdownWatchdog.lambda$startShutdownWatchdog$0(ClientShutdownWatchdog.java:34)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+
+-- Client watchdog shutdown details --
+Details:
+	Modules: 
+
+-- Uptime --
+Details:
+	JVM uptime: 122.447s
+	Wall uptime: 118.898s
+	High-res time: 118.419s
+	Client ticks: 2015 ticks / 100.750s
+
+-- Affected level --
+Details:
+	All players: 1 total; LocalPlayer{name=Player923, id=103, pos=(-62.69999998807907, 9.0, 102.69999998807907), mode=CREATIVE, permission=owner}
+	Chunk stats: 1521, 1057
+	Level dimension: minecraft:overworld
+	Level time: 39757 game time, 52233 day time
+	Level spawn location: World: (-96,64,64), Section: (at 0,0,0 in -6,4,4; chunk contains blocks -96,-64,64 to -81,319,79), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,-64,0 to -1,319,511)
+	Server brand: fabric
+	Server type: Integrated singleplayer server
+	Tracked entity count: 143
+	Client weather: Raining: false, thundering: false
+
+-- Last reload --
+Details:
+	Reload number: 1
+	Reload reason: initial
+	Finished: Yes
+	Packs: vanilla, fabric-advancement-api-v1, fabric-api, fabric-api-base, fabric-api-lookup-api-v1, fabric-biome-api-v1, fabric-block-api-v1, fabric-block-getter-api-v2, fabric-client-gametest-api-v1, fabric-command-api-v2, fabric-content-registries-v0, fabric-convention-tags-v2, fabric-crash-report-info-v1, fabric-creative-tab-api-v1, fabric-data-attachment-api-v1, fabric-data-generation-api-v1, fabric-debug-api-v1, fabric-dimensions-v1, fabric-entity-events-v1, fabric-events-interaction-v0, fabric-game-rule-api-v1, fabric-gametest-api-v1, fabric-item-api-v1, fabric-key-mapping-api-v1, fabric-language-kotlin, fabric-lifecycle-events-v1, fabric-loot-api-v3, fabric-menu-api-v1, fabric-message-api-v1, fabric-model-loading-api-v1, fabric-networking-api-v1, fabric-object-builder-api-v1, fabric-particles-v1, fabric-permission-api-v1, fabric-recipe-api-v1, fabric-registry-sync-v0, fabric-renderer-api-v1, fabric-renderer-indigo, fabric-rendering-fluids-v1, fabric-rendering-v1, fabric-resource-conditions-api-v1, fabric-resource-loader-v0, fabric-resource-loader-v1, fabric-screen-api-v1, fabric-serialization-api-v1, fabric-sound-api-v1, fabric-tag-api-v1, fabric-transfer-api-v1, fabric-transitive-access-wideners-v1, fabricloader, lb26
+
+-- System Details --
+Details:
+	Minecraft Version: 26.2
+	Minecraft Version ID: 26.2
+	Operating System: Mac OS X (aarch64) version 26.6.2
+	Java Version: 25.0.4.1, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 295416584 bytes (281 MiB) / 870318080 bytes (830 MiB) up to 4294967296 bytes (4096 MiB)
+	Memory (heap): init: 256MiB, used: 546MiB, committed: 830MiB, max: 4096MiB
+	Memory (non-head): init: 007MiB, used: 204MiB, committed: 219MiB, max: 000MiB
+	CPUs: 8
+	Processor Vendor: Apple Inc.
+	Processor Name: Apple M3
+	Identifier: Apple Inc. Family 0x8765edea Model 0 Stepping 0
+	Microarchitecture: ARM64 SoC: Everest + Sawtooth
+	Frequency (GHz): 4.06
+	Number of physical packages: 1
+	Number of physical CPUs: 8
+	Number of logical CPUs: 8
+	Graphics card #0 name: Apple M3
+	Graphics card #0 vendor: Apple (0x106b)
+	Graphics card #0 VRAM (MiB): 0.00
+	Graphics card #0 deviceId: unknown
+	Graphics card #0 versionInfo: unknown
+	Memory slot #0 capacity (MiB): 0.00
+	Memory slot #0 clockSpeed (GHz): 0.00
+	Memory slot #0 type: unknown
+	Virtual memory max (MiB): 17408.00
+	Virtual memory used (MiB): 10432.19
+	Swap memory total (MiB): 1024.00
+	Swap memory used (MiB): 39.56
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 125974.62, total: 471482.09
+	Space in storage for workdir (MiB): available: 125974.62, total: 471482.09
+	Operating System Version: Apple macOS 26.6.2 (Tahoe) build 25G83
+	Process Elevated: false
+	Process Loads: Uptime: 122s, user: 121s (99.18%), kernel: 40s (33.02%), total: 162s (132.20%)
+	Process Virtual Size (MiB): 432438.50
+	Process Resident Size (MiB): 1286.28
+	JVM Flags: 1 total; -XX:StackShadowPages=32
+	Debug Flags: 0 total; 
+	Fabric Mods: 
+		fabric-advancement-api-v1: Fabric Advancement API (v1) 1.0.0+58719a3b9e
+		fabric-api: Fabric API 0.161.0+26.2
+		fabric-api-base: Fabric API Base 2.0.4+ece063239e
+		fabric-api-lookup-api-v1: Fabric API Lookup API (v1) 2.0.18+11e1c9a39e
+		fabric-biome-api-v1: Fabric Biome API (v1) 18.0.6+c7bd5b8e9e
+		fabric-block-api-v1: Fabric Block API (v1) 3.1.0+53515aab9e
+		fabric-block-getter-api-v2: Fabric BlockGetter API (v2) 2.0.7+ec56b6019e
+		fabric-client-gametest-api-v1: Fabric Client Game Test API (v1) 6.0.2+0f4f1dca9e
+		fabric-command-api-v2: Fabric Command API (v2) 3.1.0+00cb03469e
+		fabric-content-registries-v0: Fabric Content Registries (v0) 11.3.2+37b1aa249e
+		fabric-convention-tags-v2: Fabric Convention Tags (v2) 4.7.1+1f023a9e9e
+		fabric-crash-report-info-v1: Fabric Crash Report Info (v1) 1.0.5+086d547a9e
+		fabric-creative-tab-api-v1: Fabric Creative Tab API (v1) 5.0.15+6468574f9e
+		fabric-data-attachment-api-v1: Fabric Data Attachment API (v1) 2.2.19+515ac5339e
+		fabric-data-generation-api-v1: Fabric Data Generation API (v1) 25.6.0+c0da0b829e
+		fabric-debug-api-v1: Fabric Debug API (v1) 1.0.2+c792624d9e
+		fabric-dimensions-v1: Fabric Dimensions API (v1) 5.1.12+515ac5339e
+		fabric-entity-events-v1: Fabric Entity Events (v1) 5.0.5+06488ac19e
+		fabric-events-interaction-v0: Fabric Events Interaction (v0) 5.2.8+515ac5339e
+		fabric-game-rule-api-v1: Fabric Game Rule API (v1) 4.0.8+46a6d00c9e
+		fabric-gametest-api-v1: Fabric Game Test API (v1) 4.0.22+4a7fa0819e
+		fabric-item-api-v1: Fabric Item API (v1) 14.5.0+c68f6cbe9e
+		fabric-key-mapping-api-v1: Fabric Key Mapping API (v1) 2.0.5+e2bdee789e
+		fabric-language-kotlin: Fabric Language Kotlin 1.14.1+kotlin.2.4.20
+			org_jetbrains_kotlin_kotlin-reflect: kotlin-reflect 2.4.20
+			org_jetbrains_kotlin_kotlin-stdlib: kotlin-stdlib 2.4.20
+			org_jetbrains_kotlin_kotlin-stdlib-jdk7: kotlin-stdlib-jdk7 2.4.20
+			org_jetbrains_kotlin_kotlin-stdlib-jdk8: kotlin-stdlib-jdk8 2.4.20
+			org_jetbrains_kotlinx_atomicfu-jvm: atomicfu-jvm 0.33.0
+			org_jetbrains_kotlinx_kotlinx-coroutines-core-jvm: kotlinx-coroutines-core-jvm 1.11.0
+			org_jetbrains_kotlinx_kotlinx-coroutines-jdk8: kotlinx-coroutines-jdk8 1.11.0
+			org_jetbrains_kotlinx_kotlinx-datetime-jvm: kotlinx-datetime-jvm 0.8.0
+			org_jetbrains_kotlinx_kotlinx-io-bytestring-jvm: kotlinx-io-bytestring-jvm 0.9.1
+			org_jetbrains_kotlinx_kotlinx-io-core-jvm: kotlinx-io-core-jvm 0.9.1
+			org_jetbrains_kotlinx_kotlinx-serialization-cbor-jvm: kotlinx-serialization-cbor-jvm 1.11.0
+			org_jetbrains_kotlinx_kotlinx-serialization-core-jvm: kotlinx-serialization-core-jvm 1.11.0
+			org_jetbrains_kotlinx_kotlinx-serialization-json-jvm: kotlinx-serialization-json-jvm 1.11.0
+		fabric-lifecycle-events-v1: Fabric Lifecycle Events (v1) 4.1.4+29b6eb019e
+		fabric-loot-api-v3: Fabric Loot API (v3) 3.0.17+06488ac19e
+		fabric-menu-api-v1: Fabric Menu API (v1) 2.0.17+086d547a9e
+		fabric-message-api-v1: Fabric Message API (v1) 7.0.8+bb2ed3f79e
+		fabric-model-loading-api-v1: Fabric Model Loading API (v1) 8.0.17+c80601bb9e
+		fabric-networking-api-v1: Fabric Networking API (v1) 6.3.4+2989c6a09e
+		fabric-object-builder-api-v1: Fabric Object Builder API (v1) 24.1.1+6fcd5f039e
+		fabric-particles-v1: Fabric Particles (v1) 5.0.19+d1756aa99e
+		fabric-permission-api-v1: Fabric Permission API (v1) 1.0.5+e442d8d09e
+		fabric-recipe-api-v1: Fabric Recipe API (v1) 9.0.22+11e1c9a39e
+		fabric-registry-sync-v0: Fabric Registry Sync (v0) 7.1.1+c7bd5b8e9e
+		fabric-renderer-api-v1: Fabric Renderer API (v1) 14.1.4+2b0d8a229e
+		fabric-renderer-indigo: Fabric Renderer - Indigo 9.1.4+2b0d8a229e
+		fabric-rendering-fluids-v1: Fabric Rendering Fluids (v1) 6.0.4+06488ac19e
+		fabric-rendering-v1: Fabric Rendering (v1) 25.3.3+515ac5339e
+		fabric-resource-conditions-api-v1: Fabric Resource Conditions API (v1) 6.1.0+10e9a28b9e
+		fabric-resource-loader-v0: Fabric Resource Loader (v0) 3.3.20+4fc5413f9e
+		fabric-resource-loader-v1: Fabric Resource Loader (v1) 2.0.13+9edec1269e
+		fabric-screen-api-v1: Fabric Screen API (v1) 5.2.1+5087f8249e
+		fabric-serialization-api-v1: Fabric Serialization API (v1) 2.0.4+11a26f319e
+		fabric-sound-api-v1: Fabric Sound API (v1) 2.0.5+11a26f319e
+		fabric-tag-api-v1: Fabric Tag API (v1) 2.1.4+515ac5339e
+		fabric-transfer-api-v1: Fabric Transfer API (v1) 8.0.13+11dbb7d79e
+		fabric-transitive-access-wideners-v1: Fabric Transitive Access Wideners (v1) 8.1.4+67c847259e
+		fabricloader: Fabric Loader 0.19.5
+		java: Java HotSpot(TM) 64-Bit Server VM 25
+		lb26: lb26 1.0.0
+		minecraft: Minecraft 26.2
+		mixinextras: MixinExtras 0.5.5
+	Launched Version: Fabric
+	Backend library: LWJGL version 3.4.1-snapshot
+	Window size: 2940x1846
+	Surface Info: FIFO, 2940 x 1846
+	GFLW Platform: cocoa
+	Graphics Device: Apple M3
+	Graphics Backend: OpenGL
+	Graphics Vendor: Apple
+	Graphics Drivers: 4.1 Metal - 90.5
+	Graphics Device Extensions: GL_ARB_draw_indirect, GL_EXT_texture_filter_anisotropic
+	Graphics Device Type: OTHER
+	Graphics Device Features: DeviceFeatures[shaderDrawParameters=false, multiDrawDirectInterleaved=false, multiDrawDirectSeparate=true, multiDrawIndirect=false, drawIndirect=true, nonZeroFirstInstance=false, persistentMapping=false]
+	GL debug messages: <debugging unavailable>
+	Is Modded: Definitely; Client brand changed to 'fabric'
+	Universe: 400921fb54442d18
+	Type: Client
+	GPU Warnings: version: Metal
+	Transparency: regular
+	Render Distance: 16/16 chunks
+	Narrator config: OFF
+	Narrator status: true
+	Resource Packs: vanilla, fabric-advancement-api-v1, fabric-api, fabric-api-base, fabric-api-lookup-api-v1, fabric-biome-api-v1, fabric-block-api-v1, fabric-block-getter-api-v2, fabric-client-gametest-api-v1, fabric-command-api-v2, fabric-content-registries-v0, fabric-convention-tags-v2, fabric-crash-report-info-v1, fabric-creative-tab-api-v1, fabric-data-attachment-api-v1, fabric-data-generation-api-v1, fabric-debug-api-v1, fabric-dimensions-v1, fabric-entity-events-v1, fabric-events-interaction-v0, fabric-game-rule-api-v1, fabric-gametest-api-v1, fabric-item-api-v1, fabric-key-mapping-api-v1, fabric-language-kotlin, fabric-lifecycle-events-v1, fabric-loot-api-v3, fabric-menu-api-v1, fabric-message-api-v1, fabric-model-loading-api-v1, fabric-networking-api-v1, fabric-object-builder-api-v1, fabric-particles-v1, fabric-permission-api-v1, fabric-recipe-api-v1, fabric-registry-sync-v0, fabric-renderer-api-v1, fabric-renderer-indigo, fabric-rendering-fluids-v1, fabric-rendering-v1, fabric-resource-conditions-api-v1, fabric-resource-loader-v0, fabric-resource-loader-v1, fabric-screen-api-v1, fabric-serialization-api-v1, fabric-sound-api-v1, fabric-tag-api-v1, fabric-transfer-api-v1, fabric-transitive-access-wideners-v1, fabricloader, lb26
+	Sound Cache: 5126972 bytes in 21 buffers
+	Current Language: en_us
+	Locale: en_UA
+	System encoding: UTF-8
+	File encoding: UTF-8
+	CPU: 8x Apple M3
+	Server Running: true
+	Player Count: 1 / 8; [ServerPlayer['Player923'/103, l='ServerLevel[New World]', x=-62.70, y=9.00, z=102.70]]
+	Active Data Packs: vanilla, fabric-convention-tags-v2, fabric-gametest-api-v1
+	Available Data Packs: fabric-convention-tags-v2, fabric-gametest-api-v1, minecart_improvements, redstone_experiments, trade_rebalance, vanilla
+	Enabled Feature Flags: minecraft:vanilla
+	World Generation: Stable
+	World Seed: -8813053944038217256
+	Suppressed Exceptions: ~~NONE~~
+	Type: Integrated Server
+	Is Modded: Definitely; Client brand changed to 'fabric'; Server brand changed to 'fabric'
+	Launched Version: Fabric
