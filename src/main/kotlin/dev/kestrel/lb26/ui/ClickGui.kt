@@ -4,11 +4,11 @@ import dev.kestrel.lb26.module.Category
 import dev.kestrel.lb26.module.Module
 import dev.kestrel.lb26.module.modules.combat.AutoAnchor
 import dev.kestrel.lb26.module.modules.combat.AutoCrystal
-import dev.kestrel.lb26.module.modules.combat.HardKillAura
 import dev.kestrel.lb26.module.modules.combat.KillAura
 import dev.kestrel.lb26.module.modules.movement.Fly
 import dev.kestrel.lb26.module.modules.movement.NoFall
 import dev.kestrel.lb26.module.modules.player.AutoTotem
+import dev.kestrel.lb26.module.modules.world.Scaffold
 import dev.kestrel.lb26.module.modules.render.FullBright
 import dev.kestrel.lb26.module.modules.render.XRay
 import dev.kestrel.lb26.value.BoolValue
@@ -25,19 +25,19 @@ import org.lwjgl.glfw.GLFW
 class ClickGui : Screen(Component.literal("lb26")) {
 
     private val allModules: List<Module> = listOf(
-        KillAura, HardKillAura, AutoAnchor, AutoCrystal,
-        AutoTotem, Fly, NoFall, XRay, FullBright
+        KillAura, AutoAnchor, AutoCrystal,
+        AutoTotem, Fly, NoFall, Scaffold, XRay, FullBright
     )
 
     private val categories = listOf(
-        Category.COMBAT, Category.MOVEMENT, Category.PLAYER, Category.RENDER
+        Category.COMBAT, Category.MOVEMENT, Category.PLAYER, Category.WORLD, Category.RENDER
     )
 
     private var selectedCategory = Category.COMBAT
     private var expanded: Module? = null
 
     // panel layout
-    private val panelWidth = 320
+    private val panelWidth = 420
     private val panelHeight = 260
     private val titleBarHeight = 24
     private val searchBarHeight = 18
