@@ -1,9 +1,0 @@
-KillAura=-1
-HardKillAura=-1
-AutoAnchor=-1
-AutoCrystal=-1
-AutoTotem=-1
-Fly=-1
-NoFall=-1
-XRay=88
-FullBright=-1
