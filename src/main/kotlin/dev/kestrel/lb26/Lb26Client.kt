@@ -5,8 +5,10 @@ import dev.kestrel.lb26.module.Module
 import dev.kestrel.lb26.module.modules.combat.AutoAnchor
 import dev.kestrel.lb26.module.modules.combat.AutoCrystal
 import dev.kestrel.lb26.module.modules.combat.KillAura
+import dev.kestrel.lb26.module.modules.combat.TriggerBotLegit
 import dev.kestrel.lb26.module.modules.movement.Fly
 import dev.kestrel.lb26.module.modules.movement.NoFall
+import dev.kestrel.lb26.module.modules.movement.Sprint
 import dev.kestrel.lb26.module.modules.player.AutoTotem
 import dev.kestrel.lb26.module.modules.world.Scaffold
 import dev.kestrel.lb26.module.modules.render.FullBright
@@ -19,8 +21,8 @@ import org.lwjgl.glfw.GLFW
 object Lb26Client : ClientModInitializer {
 
     val allModules: List<Module> = listOf(
-        KillAura, AutoAnchor, AutoCrystal,
-        AutoTotem, Fly, NoFall, Scaffold, XRay, FullBright
+        KillAura, TriggerBotLegit, AutoAnchor, AutoCrystal,
+        AutoTotem, Fly, NoFall, Sprint, Scaffold, XRay, FullBright
     )
 
     private var lastSavedKeys = emptyMap<String, Int>()
