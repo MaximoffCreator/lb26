@@ -5,8 +5,8 @@ import dev.kestrel.lb26.module.Module
 import dev.kestrel.lb26.value.BoolValue
 import net.minecraft.client.Minecraft
 import net.minecraft.client.Options
+import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.world.level.block.Block
-import net.minecraft.world.level.block.Blocks
 import org.lwjgl.glfw.GLFW
 
 object XRay : Module("XRay", Category.RENDER, GLFW.GLFW_KEY_X) {
@@ -16,36 +16,46 @@ object XRay : Module("XRay", Category.RENDER, GLFW.GLFW_KEY_X) {
     private val showLava = add(BoolValue("ShowLava", true))
     private val brightOres = add(BoolValue("BrightOres", true))
 
-    private val ores: Set<Block> = setOf(
-        Blocks.DIAMOND_ORE, Blocks.DEEPSLATE_DIAMOND_ORE,
-        Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE,
-        Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE,
-        Blocks.EMERALD_ORE, Blocks.DEEPSLATE_EMERALD_ORE,
-        Blocks.REDSTONE_ORE, Blocks.DEEPSLATE_REDSTONE_ORE,
-        Blocks.LAPIS_ORE, Blocks.DEEPSLATE_LAPIS_ORE,
-        Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE,
-        Blocks.COAL_ORE, Blocks.DEEPSLATE_COAL_ORE,
-        Blocks.NETHER_GOLD_ORE, Blocks.NETHER_QUARTZ_ORE,
-        Blocks.ANCIENT_DEBRIS
+    private val oreNames: Set<String> = setOf(
+        "diamond_ore", "deepslate_diamond_ore",
+        "iron_ore", "deepslate_iron_ore",
+        "gold_ore", "deepslate_gold_ore",
+        "emerald_ore", "deepslate_emerald_ore",
+        "redstone_ore", "deepslate_redstone_ore",
+        "lapis_ore", "deepslate_lapis_ore",
+        "copper_ore", "deepslate_copper_ore",
+        "coal_ore", "deepslate_coal_ore",
+        "nether_gold_ore", "nether_quartz_ore",
+        "ancient_debris"
     )
 
-    private val chests: Set<Block> = setOf(
-        Blocks.CHEST, Blocks.TRAPPED_CHEST, Blocks.ENDER_CHEST,
-        Blocks.BARREL, Blocks.SHULKER_BOX,
-        Blocks.HOPPER, Blocks.FURNACE, Blocks.BLAST_FURNACE, Blocks.SMOKER,
-        Blocks.DISPENSER, Blocks.DROPPER
+    private val chestNames: Set<String> = setOf(
+        "chest", "trapped_chest", "ender_chest",
+        "barrel", "shulker_box",
+        "hopper", "furnace", "blast_furnace", "smoker",
+        "dispenser", "dropper"
     )
 
     private var originalGamma: Double = 0.5
     private var gammaSaved = false
+    private var wasEnabled = false
+    @JvmField var reloadRequested: Boolean = false
+
+    @JvmStatic
+
+    fun isActive(): Boolean = enabled
+
+    @JvmStatic
+    fun isOreVisible(block: Block): Boolean = isVisible(block)
 
     fun isVisible(block: Block): Boolean {
         if (!enabled) return true
-        if (block in ores) return true
-        if (showChests.value && block in chests) return true
-        if (showSpawners.value && block == Blocks.SPAWNER) return true
-        if (showLava.value && (block == Blocks.LAVA || block == Blocks.WATER)) return true
-        if (block == Blocks.AIR) return true
+        val name = BuiltInRegistries.BLOCK.getKey(block).path
+        if (name in oreNames) return true
+        if (showChests.value && name in chestNames) return true
+        if (showSpawners.value && name == "spawner") return true
+        if (showLava.value && (name == "lava" || name == "water")) return true
+        if (name == "air" || name == "cave_air" || name == "void_air") return true
         return false
     }
 
@@ -90,6 +100,12 @@ object XRay : Module("XRay", Category.RENDER, GLFW.GLFW_KEY_X) {
                 writeGamma(options, originalGamma)
                 gammaSaved = false
             }
+        }
+
+        // on toggle: request a reload that will fire inside the compileSections hook
+        if (wasEnabled != enabled) {
+            wasEnabled = enabled
+            reloadRequested = true
         }
     }
 }

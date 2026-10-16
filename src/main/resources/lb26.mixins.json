@@ -6,7 +6,8 @@
     "XRayMixin",
     "XRayFaceMixin",
     "XRayLightMixin",
-    "XRayBrightnessMixin"
+    "XRayBrightnessMixin",
+    "XRayReloadMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -14,8 +14,8 @@ public class XRayFaceMixin {
 
     @Inject(method = "shouldRenderFace", at = @At("HEAD"), cancellable = true)
     private static void lb26$shouldRenderFace(BlockState state, BlockState neighbor, Direction direction, CallbackInfoReturnable<Boolean> cir) {
-        if (!XRay.INSTANCE.getEnabled()) return;
-        if (XRay.INSTANCE.isVisible(state.getBlock())) {
+        if (!XRay.isActive()) return;
+        if (XRay.isOreVisible(state.getBlock())) {
             cir.setReturnValue(true);
         }
     }

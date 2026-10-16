@@ -13,7 +13,7 @@ public class XRayBrightnessMixin {
 
     @Inject(method = "getBrightness", at = @At("HEAD"), cancellable = true)
     private static void lb26$getBrightness(DimensionType dimensionType, int light, CallbackInfoReturnable<Float> cir) {
-        if (XRay.INSTANCE.getEnabled()) {
+        if (XRay.isActive()) {
             cir.setReturnValue(1.0f);
         }
     }

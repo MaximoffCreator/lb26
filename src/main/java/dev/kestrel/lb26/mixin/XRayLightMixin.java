@@ -25,8 +25,8 @@ public class XRayLightMixin {
         BlockPos pos,
         CallbackInfoReturnable<Integer> cir
     ) {
-        if (!XRay.INSTANCE.getEnabled()) return;
-        if (!XRay.INSTANCE.isVisible(state.getBlock())) return;
+        if (!XRay.isActive()) return;
+        if (!XRay.isOreVisible(state.getBlock())) return;
         cir.setReturnValue(LightCoordsUtil.FULL_BRIGHT);
     }
 }

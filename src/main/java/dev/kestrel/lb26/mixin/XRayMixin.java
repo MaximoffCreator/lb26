@@ -14,9 +14,8 @@ public class XRayMixin {
 
     @Inject(method = "getRenderShape", at = @At("HEAD"), cancellable = true)
     private void lb26$getRenderShape(CallbackInfoReturnable<RenderShape> cir) {
-        if (!XRay.INSTANCE.getEnabled()) return;
         BlockState state = (BlockState) (Object) this;
-        if (XRay.INSTANCE.isVisible(state.getBlock())) return;
+        if (XRay.isOreVisible(state.getBlock())) return;
         cir.setReturnValue(RenderShape.INVISIBLE);
     }
 }
